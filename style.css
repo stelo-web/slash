@@ -1,0 +1,220 @@
+:root {
+    --bg-color: #1a1a1a;
+    --surface-color: #2a2a2a;
+    --text-color: #ffffff;
+    --text-secondary: #aaaaaa;
+    --primary-color: #646cff;
+    --primary-hover: #535bf2;
+    --border-color: #444;
+    --overlay-color: rgba(0, 0, 0, 0.5);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(to right, #646cff, #a5fff5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    color: var(--text-secondary);
+}
+
+.editor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .editor-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.image-section {
+    background-color: var(--surface-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.badge {
+    font-size: 0.8rem;
+    background-color: var(--bg-color);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    color: var(--text-secondary);
+}
+
+/* Upload Zone */
+.upload-zone {
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-zone:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(100, 108, 255, 0.1);
+}
+
+.upload-zone .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Crop Container */
+.crop-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.crop-viewport {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    background-color: #000;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+    cursor: grab;
+}
+
+.crop-viewport:active {
+    cursor: grabbing;
+}
+
+.draggable-img {
+    width: 100%;
+    /* Height is auto, allowing it to be taller than viewport */
+    position: absolute;
+    top: 0;
+    left: 0;
+    user-select: none;
+    pointer-events: none;
+    /* Events handled by parent */
+    transform-origin: top left;
+}
+
+.controls {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.instruction {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.primary:disabled {
+    background-color: var(--border-color);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.btn.secondary {
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+/* Result Section */
+#result-section {
+    background-color: var(--surface-color);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    margin-bottom: 4rem;
+}
+
+.preview-wrapper {
+    margin: 2rem auto;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#output-canvas {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hidden {
+    display: none !important;
+}

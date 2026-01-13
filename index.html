@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slash Comparison Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>slash.gen</h1>
+            <p>Create stunning Before/After comparison images.</p>
+        </header>
+
+        <main>
+            <div class="editor-grid">
+                <!-- Before Section -->
+                <section class="image-section" id="before-section">
+                    <div class="section-header">
+                        <h2>Before</h2>
+                        <span class="badge">Left Side</span>
+                    </div>
+                    <div class="upload-zone" id="before-upload">
+                        <div class="icon">📷</div>
+                        <p>Drop "Before" Image</p>
+                        <input type="file" id="before-input" accept="image/*" hidden>
+                    </div>
+                    <div class="crop-container hidden" id="before-crop-container">
+                        <div class="crop-viewport" id="before-viewport">
+                            <img id="before-img" class="draggable-img" src="" alt="Before">
+                        </div>
+                        <div class="controls">
+                            <p class="instruction">Drag to adjust vertical position (Fixed Width)</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- After Section -->
+                <section class="image-section" id="after-section">
+                    <div class="section-header">
+                        <h2>After</h2>
+                        <span class="badge">Right Side</span>
+                    </div>
+                    <div class="upload-zone" id="after-upload">
+                        <div class="icon">✨</div>
+                        <p>Drop "After" Image</p>
+                        <input type="file" id="after-input" accept="image/*" hidden>
+                    </div>
+                    <div class="crop-container hidden" id="after-crop-container">
+                        <div class="crop-viewport" id="after-viewport">
+                            <img id="after-img" class="draggable-img" src="" alt="After">
+                        </div>
+                        <div class="controls">
+                            <p class="instruction">Drag to adjust vertical position (Fixed Width)</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Action Section -->
+            <div class="actions">
+                <button id="generate-btn" class="btn primary" disabled>Generate Slash Image</button>
+            </div>
+
+            <!-- Preview Modal/Section -->
+            <div id="result-section" class="hidden">
+                <h3>Result</h3>
+                <div class="preview-wrapper">
+                    <canvas id="output-canvas"></canvas>
+                </div>
+                <div class="download-actions">
+                    <button id="download-btn" class="btn secondary">Download</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
